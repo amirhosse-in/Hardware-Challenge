@@ -5,11 +5,11 @@ module predictor(input wire request, result, clk, taken, output reg prediction);
 // Your code
 reg[1:0] pred;
 initial begin
-pred=0;
+pred=2'b11;
 end
 
 always @(posedge clk)begin
-    if(request)begin
+    if(result)begin
         if(taken)begin
             if(pred == 2'b00)begin
                 pred = 2'b01;
@@ -39,9 +39,10 @@ always @(posedge clk)begin
             end
         end
     end
-    else if(result)begin
+    else if(request)begin
         prediction = pred[1];
     end
 end
 
 endmodule
+
