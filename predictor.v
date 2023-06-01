@@ -8,8 +8,8 @@ initial begin
 pred=0;
 end
 
-always @(clk)begin
-    if(request)begin
+always @(posedge clk)begin
+    if(result)begin
         if(taken)begin
             if(pred == 2'b00)begin
                 pred = 2'b01;
@@ -39,7 +39,7 @@ always @(clk)begin
             end
         end
     end
-    else if(result)begin
+    else if(request)begin
         prediction = pred[1];
     end
 end
