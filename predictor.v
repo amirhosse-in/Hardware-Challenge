@@ -9,7 +9,7 @@ pred=0;
 end
 
 always @(posedge clk)begin
-    if(result)begin
+    if(request)begin
         if(taken)begin
             if(pred == 2'b00)begin
                 pred = 2'b01;
@@ -39,7 +39,7 @@ always @(posedge clk)begin
             end
         end
     end
-    else if(request)begin
+    else if(result)begin
         prediction = pred[1];
     end
 end
